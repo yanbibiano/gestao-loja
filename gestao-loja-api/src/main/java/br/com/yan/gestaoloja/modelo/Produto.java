@@ -19,6 +19,9 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "loja_id")
+    private Integer lojaId;
+
     @Column(name = "codigo_barras", nullable = false, unique = true, length = 13)
     private String codigoBarras;
 
@@ -48,6 +51,9 @@ public class Produto {
 
     public Long getId() { return id;}
     public void setId(Long id) { this.id = id; }
+
+    public Integer getLojaId() { return lojaId;}
+    public void setLojaId(Integer lojaId) {this.lojaId = lojaId;}
 
     public String getCodigoBarras(){ return codigoBarras;}
     public void setCodigoBarras(String codigoBarras) {this.codigoBarras = codigoBarras;}
