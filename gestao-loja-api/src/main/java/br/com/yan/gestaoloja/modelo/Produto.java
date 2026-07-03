@@ -10,10 +10,16 @@
 package br.com.yan.gestaoloja.modelo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "produtos", uniqueConstraints = {
+        @UniqueConstraint(
+                name = "uk_produto_loja_coddigo",
+                columnNames = {"loja_id", "codigo_barras"}
+        )
+})
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
