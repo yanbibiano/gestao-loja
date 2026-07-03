@@ -26,21 +26,25 @@ public class Produto {
     private Long id;
 
     @Column(name = "loja_id")
+    @NotNull(message = "O ID da loja é obrigatório.")
     private Integer lojaId;
 
-    @Column(name = "codigo_barras", nullable = false, unique = true, length = 13)
+    @NotBlank(message = "O código de barras é obrigatório.")
     private String codigoBarras;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome do produto é obrigatório e não pode ficar em branco.")
     private String nome;
 
-    @Column(name = "preco_custo", nullable = false, precision = 10, scale = 2)
+    @NotNull(message = "O preço de custo é obrigatório.")
+    @PositiveOrZero(message = "O preço de venda não pode ser negativo")
     private BigDecimal precoCusto;
 
-    @Column(name = "preco_venda", nullable = false, precision = 10, scale = 2)
+    @NotNull(message = "O preço de venda é obrigatório.")
+    @PositiveOrZero(message = "O preço de venda não pode ser negativo.")
     private BigDecimal precoVenda;
 
-    @Column(nullable = false)
+   @NotNull(message = "A quantidade é obrigatória.")
+   @PositiveOrZero(message = "A quantidade não pode ser negativa.")
     private Integer quantidade;
 
     public Produto() {
